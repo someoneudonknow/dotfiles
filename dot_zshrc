@@ -111,6 +111,8 @@ alias clearnvim="rm -rf ~/.local/share/nvim ~/.local/state/nvim "
 
 if [[ "$TERM"  == "xterm-kitty" ]]; then
   kitty +kitten icat --align=left ~/Pictures/gifs/mihu_eat_tobaro.gif
+
+  alias showimg="kitty +kitten icat --align=left ${1}"
 fi
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
