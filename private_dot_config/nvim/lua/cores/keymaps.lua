@@ -11,7 +11,7 @@ local merge = table_utils.merge
 -- t: term mode
 -- c: command mode
 
-map("n", ";", ":", otps)
+map("n", ";", ":")
 
 -- better panes naviagation
 map("n", "<C-l>", "<C-w>l", otps)

@@ -21,12 +21,5 @@ return {
 				},
 			},
 		},
-		sections = {
-			lualine_c = { "filename", "tabs" },
-		},
-		tabline = {
-			lualine_a = { "buffers" },
-			lualine_z = { "tabs" },
-		},
 	},
 }
