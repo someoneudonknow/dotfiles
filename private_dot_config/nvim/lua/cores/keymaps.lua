@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local buf_map = vim.api.nvim_buf_set_keymap
 local diagnostic = vim.diagnostic
 local otps = { noremap = true, silent = true }
 local table_utils = require("utils.table-utils")
@@ -50,6 +51,15 @@ map("x", "<A-j>", ":m '>+1<CR>gv=gv", otps)
 map("x", "<A-k>", ":m '<-2<CR>gv=gv", otps)
 
 -- plugins keymaps --
+
+-- kulala
+buf_map(
+	0,
+	"n",
+	"<leader>rr",
+	"<cmd>lua require('kulala').run()<cr>",
+	{ noremap = true, silent = true, desc = "Execute the request" }
+)
 
 -- customs
 map("n", "<leader>ft", ":SelectThemes<CR>", merge({ desc = "Themes Picker" }, otps))
@@ -120,38 +130,10 @@ map({ "n" }, "<leader>gg", "<cmd>LazyGit<CR>", merge({ desc = "Lazy git" }, otps
 map({ "n", "v" }, "<leader>fn", ":TodoTelescope<CR>", merge({ desc = "Find all todos" }, otps))
 map({ "n", "v" }, "<leader>fq", ":TodoQuickFix<CR>", merge({ desc = "Find quick fixes notes" }, otps))
 
--- kulala
-map({ "n", "v" }, "<leader>rr", require("kulala").run, merge({ desc = "Run current request" }, otps))
-map({ "n", "v" }, "<leader>ra", require("kulala").run_all, merge({ desc = "Run all requests" }, otps))
-map({ "n", "v" }, "<leader>rl", require("kulala").replay, merge({ desc = "Replay last run request" }, otps))
-map({ "n", "v" }, "<leader>dr", require("kulala").inspect, merge({ desc = "Inspect current request" }, otps))
-map(
-	{ "n", "v" },
-	"<leader>ds",
-	require("kulala").show_stats,
-	merge({ desc = "Shows the statistics of the last run request." }, otps)
-)
-map({ "n", "v" }, "<leader>ac", require("kulala").copy, merge({ desc = "Copy current request as curl command." }, otps))
-map({ "n", "v" }, "<leader>nr", require("kulala").jump_next, merge({ desc = "Jumps to the next request." }, otps))
-map({ "n", "v" }, "<leader>pr", require("kulala").jump_prev, merge({ desc = "Jumps to the previous request." }, otps))
-map(
-	{ "n", "v" },
-	"<leader>fr",
-	require("kulala").search,
-	merge({ desc = "Search for all named requests in the current buffer." }, otps)
-)
-map(
-	{ "n", "v" },
-	"<leader>tv",
-	require("kulala").toggle_view,
-	merge({ desc = "Toggles between the body and headers view of the last run request." }, otps)
-)
-
 -- render markdown
 map({ "n", "v" }, "<leader>tm", ":RenderMarkdown toggle<CR>", merge({ desc = "Toggle markdown preview" }, otps))
 
 -- comments
-
 map(
 	"n",
 	"<leader>/c",
@@ -207,3 +189,57 @@ map({ "n", "v" }, "<leader>gcq", ":GitConflictListQf<CR>", merge({ desc = "Get a
 -- auto session
 map("n", "sr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
 map("n", "ss", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" })
+
+--harpoon
+
+map("n", "<leader>m", function()
+	require("harpoon"):list():add()
+end, merge({ desc = "Add marks file to harpoon" }, otps))
+
+map("n", "th", function()
+	require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
+end, merge({ desc = "Harpoon Quick Menu" }, otps))
+
+map("n", "<leader>1", function()
+	require("harpoon"):list():select(1)
+end)
+
+map("n", "<leader>2", function()
+	require("harpoon"):list():select(2)
+end)
+
+map("n", "<leader>3", function()
+	require("harpoon"):list():select(3)
+end)
+
+map("n", "<leader>4", function()
+	require("harpoon"):list():select(4)
+end)
+
+map("n", "<leader>5", function()
+	require("harpoon"):list():select(5)
+end)
+
+map("n", "<leader>6", function()
+	require("harpoon"):list():select(6)
+end)
+
+map("n", "<leader>7", function()
+	require("harpoon"):list():select(7)
+end)
+
+map("n", "<leader>8", function()
+	require("harpoon"):list():select(8)
+end)
+
+map("n", "<leader>9", function()
+	require("harpoon"):list():select(9)
+end)
+
+map("n", "<S-h>", function()
+	require("harpoon"):list():prev()
+end)
+
+map("n", "<S-l>", function()
+	require("harpoon"):list():next()
+end)

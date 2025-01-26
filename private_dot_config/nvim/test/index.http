@@ -1,15 +1,3 @@
-# @name REQUEST_ONE
-POST https://httpbin.org/post HTTP/1.1
+# @prompt pokemon
+GET https://pokeapi.co/api/v2/pokemon/{{pokemon}} HTTP/1.1
 Accept: application/json
-Content-Type: application/json
-Authorization: Bearer Foo:bar
-
-{
-  "deep": {
-    "nested": [
-      {
-        "key": "foo"
-      },
-    ]
-  }
-}

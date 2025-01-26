@@ -1,5 +1,17 @@
 local M = {}
 
+function M.get_file_name_with_extension(path)
+	assert(type(path) == "string", "param is not a string")
+
+	return vim.fn.fnamemodify(path, ":t")
+end
+
+function M.parent_dir_name(path)
+	assert(type(path) == "string", "param is not a string")
+
+	return vim.fn.fnamemodify(path, ":h")
+end
+
 function M.convert_to_table_from_file(file_path)
 	assert(type(file_path) == "string", "param is not a string")
 
@@ -26,6 +38,9 @@ function M.get_file_name_from_path(path)
 end
 
 function M.read_file(path)
+	assert(type(path) == "string", "param is not a string")
+	assert(path ~= nil, "param cannot be nil")
+
 	local file = io.open(path, "r")
 
 	if not file then

@@ -1,6 +1,6 @@
 return {
 	"sphamba/smear-cursor.nvim",
 	opts = {
-		cursor_color = "#d3cdc3",
+		smear_between_buffers = true,
 	},
 }

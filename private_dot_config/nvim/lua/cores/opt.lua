@@ -1,6 +1,8 @@
 local opts = {
 	expandtab = true,
 	tabstop = 2,
+	showtabline = 1,
+	number = true,
 	softtabstop = 2,
 	shiftwidth = 2,
 	relativenumber = true,

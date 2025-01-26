@@ -19,12 +19,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.filetype.add({
-	extension = {
-		["http"] = "http",
-	},
-})
-
 require("cores.g")
 require("cores.o")
 require("cores.opt")
@@ -37,6 +31,9 @@ require("lazy").setup({
 	},
 	install = { colorscheme = { "habamaz" } },
 	checker = { enable = true },
+	rocks = {
+		hererocks = true,
+	},
 })
 
 require("customs.plugins.init")
