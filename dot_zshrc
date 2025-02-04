@@ -108,6 +108,7 @@ alias zshprofile="nvim ~/.zshrc"
 alias reloadzsh="source ~/.zshrc"
 alias nvimprofile="cd ~/.config/nvim && nvim init.lua"
 alias clearnvim="rm -rf ~/.local/share/nvim ~/.local/state/nvim "
+alias codedir="cd ~/Personal/codes/my_projects/google_map_note_taking/"
 
 if [[ "$TERM"  == "xterm-kitty" ]]; then
   kitty +kitten icat --align=left ~/Pictures/gifs/mihu_eat_tobaro.gif

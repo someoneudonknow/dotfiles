@@ -79,6 +79,30 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+				["dockerls"] = function()
+					nvim_lsp["dockerls"].setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+					})
+				end,
+				["clangd"] = function()
+					nvim_lsp["clangd"].setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+					})
+				end,
+				["gopls"] = function()
+					nvim_lsp["gopls"].setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+					})
+				end,
+				["rust_analyzer"] = function()
+					nvim_lsp["rust_analyzer"].setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+					})
+				end,
 				["ts_ls"] = function()
 					nvim_lsp["ts_ls"].setup({
 						on_attach = on_attach,
