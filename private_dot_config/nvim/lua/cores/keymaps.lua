@@ -14,6 +14,13 @@ local merge = table_utils.merge
 
 map("n", ";", ":")
 
+-- select all
+map("n", "<C-a>", "gg<S-v>G", otps)
+
+-- increase/decrease
+map("n", "<M-Up>", "<C-a>", otps)
+map("n", "<M-Down>", "<C-x>", otps)
+
 -- better panes naviagation
 map("n", "<C-l>", "<C-w>l", otps)
 map("n", "<C-h>", "<C-w>h", otps)
@@ -21,9 +28,10 @@ map("n", "<C-k>", "<C-w>k", otps)
 map("n", "<C-j>", "<C-w>j", otps)
 
 -- better buffers navigation
-map("n", "<leader>bn", ":bnext<CR>", otps)
-map("n", "<leader>bp", ":bprevious<CR>", otps)
+map("n", "<leader>]", ":bnext<CR>", otps)
+map("n", "<leader>[", ":bprevious<CR>", otps)
 map("n", "<leader>x", ":bp|bd #<CR>", otps)
+
 -- resize pane
 map("n", "<C-Up>", ":resize +2<CR>", otps)
 map("n", "<C-Down>", ":resize -2<CR>", otps)
@@ -34,15 +42,17 @@ map("n", "<C-Right>", ":vertical resize +2<CR>", otps)
 map("v", ">", ">gv", otps)
 map("v", "<", "<gv", otps)
 
-map({ "n", "v" }, "<C-d>", "<C-d>zz")
-map({ "n", "v" }, "<C-u>", "<C-u>zz")
+-- map({ "n", "v" }, "<C-d>", "<C-d>zz")
+-- map({ "n", "v" }, "<C-u>", "<C-u>zz")
 map({ "n", "v" }, "n", "nzzzv")
 map({ "n", "v" }, "N", "Nzzzv")
 map("v", "P", "_dP")
 
+-- go to next/previous diagnostic
 map("n", "<leader>ne", diagnostic.goto_next, { desc = "Next diagnostic" })
 map("n", "<leader>pe", diagnostic.goto_prev, { desc = "Previous diagnostic" })
 
+-- move selected lines
 map("v", "<M-j>", ":m '>+1<CR>gv=gv", otps)
 map("v", "<M-k>", ":m '<-2<CR>gv=gv", otps)
 map("x", "J", ":m '>+1<CR>gv=gv", otps)
@@ -53,13 +63,39 @@ map("x", "<A-k>", ":m '<-2<CR>gv=gv", otps)
 -- plugins keymaps --
 
 -- kulala
-buf_map(
-	0,
+map("n", "<leader>rr", function()
+	require("kulala").run()
+end, merge({ desc = "Run current request" }, otps))
+
+map("n", "<leader>ra", function()
+	require("kulala").run_all()
+end, merge({ desc = "Run all requests" }, otps))
+
+map("n", "<leader>rl", function()
+	require("kulala").run_last()
+end, merge({ desc = "Run last request" }, otps))
+
+map("n", "<leader>Rc", function()
+	require("kulala").copy()
+end, merge({ desc = "Copy current request" }, otps))
+
+-- trouble
+map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", merge({ desc = "Diagnostics (Trouble)" }, otps))
+map(
 	"n",
-	"<leader>rr",
-	"<cmd>lua require('kulala').run()<cr>",
-	{ noremap = true, silent = true, desc = "Execute the request" }
+	"<leader>xX",
+	"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+	merge({ desc = "Buffer Diagnostics (Trouble)" }, otps)
 )
+map("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<CR>", merge({ desc = "Symbols (Trouble)" }, otps))
+map(
+	"n",
+	"<leader>cl",
+	"<cmd>Trouble lsp toggle focus=false win.position=right<CR>",
+	merge({ desc = "LSP Definitions / references / ... (Trouble)" }, otps)
+)
+map("n", "<leader>xL", "<cmd>Trouble loclist toggle<CR>", merge({ desc = "Location List (Trouble)" }, otps))
+map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<CR>", merge({ desc = "Quickfix List (Trouble)" }, otps))
 
 -- customs
 map("n", "<leader>ft", ":SelectThemes<CR>", merge({ desc = "Themes Picker" }, otps))

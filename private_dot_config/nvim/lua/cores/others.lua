@@ -17,7 +17,7 @@ vim.api.nvim_create_user_command("SwitchMode", function(opts)
 	settings.update_setting("horny_mode", mode == "horny")
 	settings.update_setting("alpha_header", ascii_imgs.get_current_img_idx())
 
-	print("Switched to mode: " .. mode)
+	require("notify")("Switched to mode: " .. mode, "success", { title = "Mode Change" })
 end, {
 	nargs = 1,
 	complete = function()

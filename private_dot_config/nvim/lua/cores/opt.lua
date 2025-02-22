@@ -19,6 +19,7 @@ local opts = {
 	sidescrolloff = 8,
 	termguicolors = true,
 	completeopt = { "menuone", "noselect" },
+
 }
 
 for k, v in pairs(opts) do

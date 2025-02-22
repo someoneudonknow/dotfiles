@@ -67,11 +67,9 @@ local function open_floating_help(query)
 	popup:on("BufLeave", close_popup)
 end
 
-vim.api.nvim_create_user_command("Help", function(opts)
+vim.api.nvim_create_user_command("H", function(opts)
 	open_floating_help(opts.args)
 end, {
 	nargs = 1,
 	complete = "help",
 })
-
-vim.cmd("cabbrev h Help")
