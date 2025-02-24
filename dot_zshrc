@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="refined"
+ZSH_THEME="afowler"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -112,9 +112,15 @@ alias clearnvim="rm -rf ~/.local/share/nvim ~/.local/state/nvim "
 alias mypj="cd ~/Personal/codes/my_projects"
 alias demopj="cd ~/Personal/codes/demo_projects/"
 alias vi="nvim"
-alias restart="sudo reboot now"
-alias shutdown="sudo shutdown now"
 alias lzd="lazydocker"
+alias i3profile="nvim ~/.config/i3/config"
+
+# ssh
+alias bunny="ssh bunny@192.168.100.147"
+
+alias restart="reboot now"
+alias shutdown="shutdown now"
+alias sleep="systemctl suspend"
 
 export PATH=$PATH:$HOME/go/bin
 
