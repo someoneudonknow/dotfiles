@@ -9,7 +9,6 @@ set $mod Mod4
 font pango:JetBrains Mono Nerd Font 13
 default_border pixel 0
 default_floating_border pixel 0
-#font pango:DejaVu Sans Mono 8
 
 exec --no-startup-id dex --autostart --environment i3
 
@@ -24,6 +23,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 
 bindsym $mod+space exec ~/scripts/switch_lang.sh
+bindsym $mod+Escape exec ~/scripts/system_control.sh
 
 floating_modifier $mod
 
@@ -151,6 +151,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Fog-Forest-Everforest.png
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Girl4.png
+
+exec --no-startup-id redshift -P -O 3000
 
 assign [class="kitty"] 1
 assign [class="Firefox"] 2
