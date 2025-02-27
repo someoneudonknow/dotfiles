@@ -10,20 +10,22 @@ if type "xrandr" > /dev/null 2>&1; then
   unique_positions=$(echo "$positions" | sort -u | wc -l)
 
   if [ "$monitor_count" -gt 1 ] && [ "$unique_positions" -eq 1 ]; then
-    # Duplicate mode detected: launch Polybar on primary monitor only
+    # Duplicate mode: launch Polybar on primary monitor only
     primary_monitor=$(xrandr --query | grep " connected" | grep "primary" | cut -d" " -f1)
     if [ -z "$primary_monitor" ]; then
-      # Fallback to first connected monitor if no primary is set
       primary_monitor=$(echo "$monitors" | head -n 1)
     fi
     MONITOR="$primary_monitor" polybar --reload toph &
+    echo "Launched Polybar on primary monitor ($primary_monitor) in duplicate mode."
   else
-    # Extended mode or single monitor: launch Polybar on all monitors
+    # Extended mode or single monitor: launch Polybar on each monitor
     for m in $monitors; do
       MONITOR="$m" polybar --reload toph &
+      echo "Launched Polybar on $m."
     done
   fi
 else
   # No xrandr, launch Polybar without monitor specification
   polybar --reload toph &
+  echo "Launched Polybar without monitor specification."
 fi

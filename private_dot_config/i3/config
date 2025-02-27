@@ -1,19 +1,17 @@
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 
-exec_always --no-startup-id killall picom
-exec_always --no-startup-id picom
+exec --no-startup-id picom
 
 set $mod Mod4
 
 font pango:JetBrains Mono Nerd Font 13
+
 default_border pixel 0
 default_floating_border pixel 0
 
 exec --no-startup-id dex --autostart --environment i3
-
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -24,6 +22,8 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 
 bindsym $mod+space exec ~/scripts/switch_lang.sh
 bindsym $mod+Escape exec ~/scripts/system_control.sh
+bindsym $mod+m exec ~/scripts/rofi-beats-linux
+bindsym $mod+Shift+s exec ~/scripts/monitors.sh
 
 floating_modifier $mod
 
@@ -152,7 +152,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Fog-Forest-Everforest.png
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Girl4.png
 
-exec --no-startup-id redshift -P -O 3000
+exec --no-startup-id redshift -P -t 5000:4000 
 
 assign [class="kitty"] 1
 assign [class="Firefox"] 2

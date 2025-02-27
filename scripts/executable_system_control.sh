@@ -1,11 +1,9 @@
-
 #!/bin/bash
 
-options="  Shutdown\n  Reboot\n  Logout\n  Suspend\n  Lock"
+options=$(printf "  Shutdown\n  Reboot\n  Logout\n  Suspend\n  Lock")
 
-chosen=$(echo "$options" | rofi -dmenu -i -p "Power Menu" -theme $ROFI_THEME)
+chosen=$(echo "$options" | rofi -dmenu -p "Power Menu" -config ~/.config/rofi/system_control.rasi)
 
-# Perform action based on user choice
 case "$chosen" in
     "  Shutdown") systemctl poweroff ;;
     "  Reboot") systemctl reboot ;;
