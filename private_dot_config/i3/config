@@ -7,9 +7,6 @@ set $mod Mod4
 
 font pango:JetBrains Mono Nerd Font 13
 
-default_border pixel 0
-default_floating_border pixel 0
-
 exec --no-startup-id dex --autostart --environment i3
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
@@ -48,21 +45,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+h focus right
 
-# bindsym $mod+Left focus left
-# bindsym $mod+Down focus down
-# bindsym $mod+Up focus up
-# bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# bindsym $mod+Shift+Left move left
-# bindsym $mod+Shift+Down move down
-# bindsym $mod+Shift+Up move up
-# bindsym $mod+Shift+Right move right
 
 # bindsym $mod+minus split h
 # bindsym $mod+bar split v
@@ -149,7 +136,10 @@ bindsym $mod+n exec "~/scripts/nightlight.sh"
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Fog-Forest-Everforest.png
+default_border pixel 0
+default_floating_border pixel 0
+
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Room.png
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Girl4.png
 
 exec --no-startup-id redshift -P -t 5000:4000 
