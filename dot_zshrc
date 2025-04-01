@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="afowler"
+# ZSH_THEME="afowler"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -114,6 +114,12 @@ alias demopj="cd ~/Personal/codes/demo_projects/"
 alias vi="nvim"
 alias lzd="lazydocker"
 alias i3profile="nvim ~/.config/i3/config"
+alias whereami="curl -s https://ipinfo.io/loc"
+alias odoo="sudo /opt/odoo18/odoo18-venv/bin/python3 /opt/odoo18/odoo18/odoo-bin -c /etc/odoo18.conf"
+alias psql="sudo -u postgres psql"
+
+alias startzookeeper="zookeeper-server-start /opt/kafka/config/zookeeper.properties"
+alias startkafka="kafka-server-start /opt/kafka/config/server.properties"
 
 # ssh
 alias bunny="ssh bunny@192.168.100.147"
@@ -130,9 +136,13 @@ export PATH=$PATH:$HOME/go/bin
 #   alias showimg="kitty +kitten icat --align=left ${1}"
 # fi
 
+eval "$(oh-my-posh init zsh --config ~/.cache/oh-my-posh/themes/clean-detailed.omp.json)"
+
 if [[ -x "$(command -v fastfetch)" &&  "$TERM"  == "xterm-kitty" ]]; then
   fastfetch
 fi
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+
+export PATH=$PATH:/opt/kafka/bin

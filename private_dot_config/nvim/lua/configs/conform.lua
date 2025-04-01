@@ -19,6 +19,8 @@ return {
 				python = { "isort", "black" },
 				go = { "golines" },
 				rust = { "rustfmt" },
+				sh = { "beautysh" },
+				sql = { "sqlfmt" },
 			},
 			format_on_save = {
 				lsp_fallback = true,

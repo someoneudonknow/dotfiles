@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-local buf_map = vim.api.nvim_buf_set_keymap
 local diagnostic = vim.diagnostic
 local otps = { noremap = true, silent = true }
 local table_utils = require("utils.table-utils")

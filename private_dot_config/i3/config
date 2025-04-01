@@ -13,6 +13,27 @@ exec --no-startup-id nm-applet
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
+for_window [class=".*"] border pixel 0
+default_border pixel 0
+default_floating_border pixel 0
+
+
+# Format: client.<state>    border  background  text    indicator
+# client.focused          #00CED1 #00CED1 #FFFFFF #00CED1
+# client.focused_inactive #4682B4 #4682B4 #FFFFFF #4682B4
+# client.unfocused        #191970 #191970 #FFFFFF #191970
+# client.urgent           #00CED1 #00CED1 #FFFFFF #00CED1
+# client.placeholder      #000000 #000000 #FFFFFF #000000
+
+# client.focused          #FF0080 #FF0080 #FF0080 #FF0080
+# client.focused_inactive #444444 #444444 #444444 #444444
+# client.unfocused        #222222 #222222 #222222 #222222
+# client.urgent           #FF0080 #FF0080 #FF0080 #FF0080
+# client.placeholder      #000000 #000000 #000000 #000000
+
+# screenshot
+bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
+
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
@@ -25,7 +46,7 @@ bindsym $mod+Shift+s exec ~/scripts/monitors.sh
 floating_modifier $mod
 
 gaps inner 10
-gaps outer 5
+gaps outer 2
 
 tiling_drag modifier titlebar
 
@@ -136,11 +157,15 @@ bindsym $mod+n exec "~/scripts/nightlight.sh"
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-default_border pixel 0
-default_floating_border pixel 0
-
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Room.png
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Room.png
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Girl4.png
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/high_res_ani/eyes.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/high_res_ani/ani3.jpg
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/astronaut_2.jpg
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/City-Rainy-Night.png
+
+exec_always --no-startup-id sh -c 'export GTK_THEME=Yaru-bark-dark'
+exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 exec --no-startup-id redshift -P -t 5000:4000 
 

@@ -1,4 +1,14 @@
-local servers = { "lua_ls", "rust_analyzer", "gopls", "clangd", "cssls", "dockerls", "ts_ls", "html", "pyright" }
+local servers = {
+	"lua_ls",
+	"rust_analyzer",
+	"gopls",
+	"clangd",
+	"cssls",
+	"dockerls",
+	"ts_ls",
+	"html",
+	"pyright",
+}
 local formatters = {
 	"prettier",
 	"stylua",
@@ -11,6 +21,9 @@ local formatters = {
 	"rustfmt",
 	"golines",
 	"lemminx",
+	"beautysh",
+	"sqlfmt",
+	"postgrestools",
 }
 
 local settings = {
@@ -81,6 +94,12 @@ return {
 				end,
 				["dockerls"] = function()
 					nvim_lsp["dockerls"].setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+					})
+				end,
+				["bash-language-server"] = function()
+					nvim_lsp["bash-language-server"].setup({
 						on_attach = on_attach,
 						capabilities = capabilities,
 					})
