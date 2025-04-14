@@ -13,10 +13,9 @@ exec --no-startup-id nm-applet
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
-for_window [class=".*"] border pixel 0
-default_border pixel 0
-default_floating_border pixel 0
-
+for_window [class=".*"] border pixel 2
+default_border pixel 2
+default_floating_border pixel 2
 
 # Format: client.<state>    border  background  text    indicator
 # client.focused          #00CED1 #00CED1 #FFFFFF #00CED1
@@ -25,13 +24,12 @@ default_floating_border pixel 0
 # client.urgent           #00CED1 #00CED1 #FFFFFF #00CED1
 # client.placeholder      #000000 #000000 #FFFFFF #000000
 
-# client.focused          #FF0080 #FF0080 #FF0080 #FF0080
-# client.focused_inactive #444444 #444444 #444444 #444444
-# client.unfocused        #222222 #222222 #222222 #222222
-# client.urgent           #FF0080 #FF0080 #FF0080 #FF0080
-# client.placeholder      #000000 #000000 #000000 #000000
+client.focused          #FF0080 #FF0080 #FF0080 #FF0080
+client.focused_inactive #444444 #444444 #444444 #444444
+client.unfocused        #222222 #222222 #222222 #222222
+client.urgent           #FF0080 #FF0080 #FF0080 #FF0080
+client.placeholder      #000000 #000000 #000000 #000000
 
-# screenshot
 bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
@@ -71,9 +69,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# bindsym $mod+minus split h
-# bindsym $mod+bar split v
 
 bindsym $mod+quotedbl split h
 bindsym $mod+minus split v
@@ -159,22 +154,26 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Room.png
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Girl4.png
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/high_res_ani/eyes.jpg
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/high_res_ani/ani3.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/high_res_ani/eyes.jpg
+# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/high_res_ani/ani3.jpg
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/astronaut_2.jpg
 # exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/City-Rainy-Night.png
 
 exec_always --no-startup-id sh -c 'export GTK_THEME=Yaru-bark-dark'
 exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-
+exec --no-startup-id xinput set-prop "SYNA7DB5:01 06CB:CD41 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id redshift -P -t 5000:4000 
 
-assign [class="kitty"] 1
-assign [class="Firefox"] 2
-assign [class="obsidian"] 3
-assign [class="org.gnome.Nautilus"] 4
+assign [class="kitty"]              $ws1
+assign [class="Code"]               $ws2
+assign [class="Firefox"]            $ws3
+assign [class="obsidian"]           $ws4
+assign [class="^Spotify*"]          $ws5
+assign [class="org.gnome.Nautilus"] $ws6
 
 exec i3-msg 'workspace 1; exec kitty'
-exec i3-msg 'workspace 2; exec firefox'
-exec i3-msg 'workspace 3; exec obsidian'
-exec i3-msg 'workspace 4; exec nautilus'
+exec i3-msg 'workspace 2; exec code'
+exec i3-msg 'workspace 3; exec firefox'
+exec i3-msg 'workspace 4; exec obsidian'
+exec i3-msg 'workspace 5; exec spotify'
+exec i3-msg 'workspace 6; exec nautilus'

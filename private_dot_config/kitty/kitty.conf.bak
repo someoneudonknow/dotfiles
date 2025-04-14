@@ -53,6 +53,6 @@ draw_minimal_borders yes
 
 
 # BEGIN_KITTY_THEME
-# Monokai Soda
+# 1984 Dark
 include current-theme.conf
 # END_KITTY_THEME
