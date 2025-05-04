@@ -1,103 +1,90 @@
-* {
-    font: "JetBrainsMono Nerd Font 13";
-    g-spacing: 10px;
-    g-margin: 0;
-    b-color: #000000FF;
-    fg-color:  	#86cecb;
-    fgp-color: #888888FF;
-    b-radius: 8px;
-    g-padding: 8px;
-    hl-color:  	#137a7f;
-    hlt-color: #000000FF;
-    white-color: #bec8d1;
-    alt-color: #111111FF;
-    wbg-color: #000000CC;
-    w-border: 2px solid;
-    w-border-color: #e12885;
-    w-padding: 10px;
-}
-
 configuration {
-    icon-theme: "Papirus";
-    modi: "drun";
-    show-icons: true;
-    display-drun: "";
+  display-drun: "Applications:";
+  display-window: "Windows:";
+  display-run: "Command:";
+  drun-display-format: "{name}";
+  font: "JetBrainsMono Nerd Font 13";
+  modi: "window,run,drun";
+  icon-theme: "Papirus";
+  show-icons: true;
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
 }
 
-listview {
-    columns: 1;
-    lines: 7;
-    fixed-height: true;
-    fixed-columns: true;
-    cycle: false;
-    scrollbar: false;
-    border: 0px solid;
+@import "~/.cache/wal/colors-rofi-dark"
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
 }
 
 window {
-    transparency: "real";
-    width: 500px;
-    border-radius: @b-radius;
-    background-color: @wbg-color;
-    border: @w-border;
-    border-color: @w-border-color;
-    padding: @w-padding;
-}
-
-prompt {
-    text-color: @fg-color;
-}
-
-inputbar {
-    children: ["prompt", "entry"];
-    spacing: @g-spacing;
-}
-
-entry {
-    placeholder: "Search Apps";
-    text-color: @fg-color;
-    placeholder-color: @fgp-color;
-}
-
-mainbox {
-    spacing: @g-spacing;
-    margin: @g-margin;
-    padding: @g-padding;
-    children: ["inputbar", "listview", "message"];
+  width: 40%;
+  border-radius: 14px;
+  background-color: @selected-active-background;
+  transparency: "real";
+  padding: 4px;
 }
 
 element {
-    spacing: @g-spacing;
-    margin: @g-margin;
-    padding: @g-padding;
-    border: 0px solid;
-    border-radius: @b-radius;
-    border-color: @b-color;
-    background-color: transparent;
-    text-color: @fg-color;
+  padding: 8 12;
+  background-color: transparent;
 }
 
-element normal.normal {
-	background-color: transparent;
-	text-color: @fg-color;
+element selected {
+  text-color: @foreground;
+  background-color: @selected-active-background;
 }
 
-element alternate.normal {
-	background-color: @alt-color;
-	text-color: @fg-color;
+element-text {
+  background-color: transparent;
+  text-color: inherit;
+  vertical-align: 0.5;
 }
 
-element selected.active {
-	background-color: @hl-color;
-	text-color: @white-color;
+element-icon {
+  size: 14;
+  padding: 0 10 0 0;
+  background-color: transparent;
 }
 
-element selected.normal {
-	background-color: @hl-color;
-	text-color: @white-color;
+entry {
+  padding: 12;
+  background-color: @bg-alt;
+  text-color: @foreground;
 }
 
-message {
-    background-color: red;
-    border: 0px solid;
+inputbar {
+  children: [prompt, entry];
+  background-color: @background;
 }
+
+listview {
+  fixed-height: true;
+  background-color: @background;
+  columns: 1;
+  lines: 7;
+}
+
+mainbox {
+  children: [inputbar, listview];
+  background-color: @background;
+  border-radius: 10px;
+}
+
+prompt {
+  enabled: true;
+  padding: 12 0 0 12;
+  background-color: @normal-background;
+  text-color: @foreground;
+}
+
+element-icon {
+    size: 4ch;
+}
+
+

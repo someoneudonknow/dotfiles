@@ -1,3 +1,7 @@
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $cl i3wm.color6 #f0f0f0
+set_from_resource $bg i3wm.color1 #f0f0f0
+
 exec_always --no-startup-id killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 
@@ -8,27 +12,21 @@ set $mod Mod4
 font pango:JetBrains Mono Nerd Font 13
 
 exec --no-startup-id dex --autostart --environment i3
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
-for_window [class=".*"] border pixel 2
-default_border pixel 2
-default_floating_border pixel 2
+for_window [class=".*"] border pixel 0
+default_border pixel 0
+default_floating_border pixel 0
 
-# Format: client.<state>    border  background  text    indicator
-# client.focused          #00CED1 #00CED1 #FFFFFF #00CED1
-# client.focused_inactive #4682B4 #4682B4 #FFFFFF #4682B4
-# client.unfocused        #191970 #191970 #FFFFFF #191970
-# client.urgent           #00CED1 #00CED1 #FFFFFF #00CED1
-# client.placeholder      #000000 #000000 #FFFFFF #000000
-
-client.focused          #FF0080 #FF0080 #FF0080 #FF0080
-client.focused_inactive #444444 #444444 #444444 #444444
-client.unfocused        #222222 #222222 #222222 #222222
-client.urgent           #FF0080 #FF0080 #FF0080 #FF0080
-client.placeholder      #000000 #000000 #000000 #000000
+#class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
 
 bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
 
@@ -40,6 +38,7 @@ bindsym $mod+space exec ~/scripts/switch_lang.sh
 bindsym $mod+Escape exec ~/scripts/system_control.sh
 bindsym $mod+m exec ~/scripts/rofi-beats-linux
 bindsym $mod+Shift+s exec ~/scripts/monitors.sh
+bindsym $mod+Shift+w exec ~/scripts/wallpapers_picker.sh
 
 floating_modifier $mod
 
@@ -85,8 +84,6 @@ bindsym $mod+space+c focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
-
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -120,11 +117,8 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
@@ -152,12 +146,7 @@ bindsym $mod+n exec "~/scripts/nightlight.sh"
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Room.png
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/Anime-Girl4.png
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/high_res_ani/eyes.jpg
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/high_res_ani/ani3.jpg
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/astronaut_2.jpg
-# exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpapers/City-Rainy-Night.png
+exec_always --no-startup-id ~/scripts/set_wallpaper.sh
 
 exec_always --no-startup-id sh -c 'export GTK_THEME=Yaru-bark-dark'
 exec_always --no-startup-id gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'

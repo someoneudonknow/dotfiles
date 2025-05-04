@@ -1,0 +1,53 @@
+@import "~/.config/rofi/config.rasi"
+
+* {
+    g-spacing: 10px;
+    b-radius: 8px;
+}
+
+window {
+    width: 850px;
+    transparency: "real";
+}
+
+mainbox {
+    children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+    children: [ "prompt", "entry" ];
+    spacing: @g-spacing;
+}
+
+entry {
+    placeholder: "Search Wallpapers...";
+    expand: true;
+}
+
+listview {
+    columns: 4;
+    lines: 3;
+    fixed-height: true;
+    fixed-columns: true;
+    cycle: false;
+    scrollbar: true;
+    spacing: 5px;
+}
+
+element {
+    orientation: vertical;
+    spacing: 5px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: @b-radius;
+    background-color: transparent;
+}
+
+element-icon {
+    size: 150px;
+    horizontal-align: 0.5;
+}
+
+element-text {
+    text-align: center;
+}

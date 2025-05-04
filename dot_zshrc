@@ -119,7 +119,6 @@ alias whereami="curl -s https://ipinfo.io/loc"
 alias odoo="sudo /opt/odoo18/odoo18-venv/bin/python3 /opt/odoo18/odoo18/odoo-bin -c /etc/odoo18.conf"
 alias odoo-shell="sudo /opt/odoo18/odoo18-venv/bin/python3 /opt/odoo18/odoo18/odoo-bin shell"
 alias psql="sudo -u postgres psql"
-
 alias startzookeeper="zookeeper-server-start /opt/kafka/config/zookeeper.properties"
 alias startkafka="kafka-server-start /opt/kafka/config/server.properties"
 
@@ -139,7 +138,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 #   alias showimg="kitty +kitten icat --align=left ${1}"
 # fi
 
-eval "$(oh-my-posh init zsh --config ~/.cache/oh-my-posh/themes/1_shell.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.cache/oh-my-posh/themes/clean-detailed.omp.json)"
 
 if [[ -x "$(command -v fastfetch)" &&  "$TERM"  == "xterm-kitty" ]]; then
   fastfetch
@@ -150,3 +149,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export PATH=$PATH:/opt/kafka/bin
 export PATH=$PATH:/usr/local/go/bin
+

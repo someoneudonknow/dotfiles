@@ -1,9 +1,10 @@
 #!/bin/bash
 
 menu() {
-  printf "1. Only Second\n" 
-  printf "2. Only Primary\n"
-  printf "3. Duplicates"
+    printf "1. Only Second\n"
+    printf "2. Only Primary\n"
+    printf "3. Duplicates\n"
+    printf "4. Extended"
 }
 
 main() {
@@ -19,15 +20,20 @@ main() {
             echo "Only Second"
             xrandr --output "$SECONDARY" --mode "$RESOLUTION" --rate "$RATE" --primary --output "$PRIMARY" --off
             ;;
-        2) 
+        2)
             echo "Only Primary"
             xrandr --output "$PRIMARY" --mode "$RESOLUTION" --rate "$RATE" --primary --output "$SECONDARY" --off
             ;;
         3)
             echo "Duplicates"
             xrandr --output "$PRIMARY" --mode "$RESOLUTION" --rate "$RATE" --primary \
-                   --output "$SECONDARY" --mode "$RESOLUTION" --rate "$RATE" --same-as "$PRIMARY"
+                --output "$SECONDARY" --mode "$RESOLUTION" --rate "$RATE" --same-as "$PRIMARY"
             ;;
+        4)
+            echo "Extended"
+            xrandr --output "$PRIMARY" --mode "$RESOLUTION" --rate "$RATE" --primary \
+                --output "$SECONDARY" --mode "$RESOLUTION" --rate "$RATE" --left-of "$PRIMARY" \
+                ;;
         *)
             echo "Invalid choice"
             exit 1
