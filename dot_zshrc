@@ -109,7 +109,7 @@ alias profile="nvim ~/.zshrc"
 alias cls="clear"
 alias reload="source ~/.zshrc"
 alias nvimprofile="cd ~/.config/nvim && nvim init.lua"
-alias clearnvim="rm -rf ~/.local/share/nvim ~/.local/state/nvim "
+alias clearnvim="rm -rf ~/.local/share/nvim ~/.local/state/nvim"
 alias mypj="cd ~/Personal/codes/my_projects"
 alias demopj="cd ~/Personal/codes/demo_projects/"
 alias vi="nvim"
@@ -149,4 +149,3 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export PATH=$PATH:/opt/kafka/bin
 export PATH=$PATH:/usr/local/go/bin
-

@@ -154,14 +154,14 @@ exec --no-startup-id xinput set-prop "SYNA7DB5:01 06CB:CD41 Touchpad" "libinput 
 exec --no-startup-id redshift -P -t 5000:4000 
 
 assign [class="kitty"]              $ws1
-assign [class="Code"]               $ws2
+assign [class="Cursor"]               $ws2
 assign [class="Firefox"]            $ws3
 assign [class="obsidian"]           $ws4
 assign [class="^Spotify*"]          $ws5
 assign [class="org.gnome.Nautilus"] $ws6
 
 exec i3-msg 'workspace 1; exec kitty'
-exec i3-msg 'workspace 2; exec code'
+exec i3-msg 'workspace 2; exec cursor'
 exec i3-msg 'workspace 3; exec firefox'
 exec i3-msg 'workspace 4; exec obsidian'
 exec i3-msg 'workspace 5; exec spotify'
