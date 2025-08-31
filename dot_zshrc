@@ -21,8 +21,6 @@ ZSH_THEME=robbyrussell
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
@@ -103,7 +101,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 
 alias profile="nvim ~/.zshrc"
 alias cls="clear"
@@ -122,9 +119,15 @@ alias psql="sudo -u postgres psql"
 alias startzookeeper="zookeeper-server-start /opt/kafka/config/zookeeper.properties"
 alias startkafka="kafka-server-start /opt/kafka/config/server.properties"
 
-# ssh
-alias bunny="ssh bunny@192.168.100.147"
+alias odoodbs="docker compose -f /home/trantudev/Personal/works/myconf/dockers/odoo_dbs/docker-compose.yaml up -d"
 
+# ssh
+alias mms-server="ssh root@203.29.19.235"
+
+# support
+alias upgrade-restart="python3 wesap-bin -c ../myconf/mms/odoo.conf -d mms_dev -u mms" 
+
+# system
 alias restart="reboot now"
 alias shutdown="shutdown now"
 alias sleep="systemctl suspend"
@@ -149,3 +152,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export PATH=$PATH:/opt/kafka/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$HOME/.local/bin:$PATH
